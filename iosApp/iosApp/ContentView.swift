@@ -15,12 +15,7 @@ struct ContentView: View {
         ComposeView()
                 .ignoresSafeArea(.keyboard) // Compose has own keyboard handler
     }
-    
-    func sumArray(input: [Int]) -> String {
-        var total = 0
-        for item in input {
-            total += item
-        }
-        return "Total value is \(total)"
-    }
 }
+
+
+

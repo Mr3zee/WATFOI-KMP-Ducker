@@ -1,7 +1,6 @@
 plugins {
     alias(libs.plugins.kotlinMultiplatform)
     alias(libs.plugins.androidLibrary)
-    id("org.jetbrains.kotlin.android")
 }
 
 kotlin {
@@ -32,8 +31,4 @@ android {
     defaultConfig {
         minSdk = libs.versions.android.minSdk.get().toInt()
     }
-}
-dependencies {
-    implementation("androidx.core:core-ktx:+")
-    implementation("androidx.core:core-ktx:+")
 }

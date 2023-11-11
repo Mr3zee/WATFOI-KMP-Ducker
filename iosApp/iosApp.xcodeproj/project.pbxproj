@@ -6,133 +6,133 @@
 	objectVersion = 50;
 	objects = {
 
-/* Begin PBXBuildFile section */
-		058557BB273AAA24004C7B11 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 058557BA273AAA24004C7B11 /* Assets.xcassets */; };
-		058557D9273AAEEB004C7B11 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 058557D8273AAEEB004C7B11 /* Preview Assets.xcassets */; };
-		2152FB042600AC8F00CF470E /* iOSApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2152FB032600AC8F00CF470E /* iOSApp.swift */; };
-		7555FF83242A565900829871 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7555FF82242A565900829871 /* ContentView.swift */; };
-/* End PBXBuildFile section */
-
-/* Begin PBXFileReference section */
-		058557BA273AAA24004C7B11 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		058557D8273AAEEB004C7B11 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		2152FB032600AC8F00CF470E /* iOSApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iOSApp.swift; sourceTree = "<group>"; };
-		7555FF7B242A565900829871 /* .app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = .app; sourceTree = BUILT_PRODUCTS_DIR; };
-		7555FF82242A565900829871 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
-		7555FF8C242A565B00829871 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		AB3632DC29227652001CCB65 /* Config.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = Config.xcconfig; sourceTree = "<group>"; };
-/* End PBXFileReference section */
-
 /* Begin PBXGroup section */
-		058557D7273AAEEB004C7B11 /* Preview Content */ = {
-			isa = PBXGroup;
-			children = (
-				058557D8273AAEEB004C7B11 /* Preview Assets.xcassets */,
-			);
-			path = "Preview Content";
-			sourceTree = "<group>";
-		};
-		40F0204881364D2CC556D6C2 /* xcschemes */ = {
+		40F0214385FA10B0F3B08B33 /* xcschemes */ = {
 			isa = PBXGroup;
 			children = (
 			);
 			path = xcschemes;
 			sourceTree = "<group>";
 		};
-		40F021C22CD3D1D70DCC3EA9 /* xcshareddata */ = {
+		40F023DDF08CC310C886E6C1 = {
 			isa = PBXGroup;
 			children = (
-				40F029D9C3A2948CAD706B37 /* swiftpm */,
+				40F02942F8E87BB8DFCE9A97 /* iosApp */,
+				40F0268E66219982A62C21D7 /* Configuration */,
+				40F024D07751B03A6BD6D973 /* Assets.xcassets */,
+				40F02777E8E5186C2EAAEA4B /* Preview Content */,
+				40F0276D8B3F62A043CB77CE /* iosApp.xcodeproj */,
 			);
-			path = xcshareddata;
 			sourceTree = "<group>";
 		};
-		40F021D838FEA03651EE2BA0 /* project.xcworkspace */ = {
+		40F024C8822D426950404FC6 /* swiftpm */ = {
 			isa = PBXGroup;
 			children = (
-				40F021C22CD3D1D70DCC3EA9 /* xcshareddata */,
-			);
-			name = project.xcworkspace;
-			path = iosApp.xcodeproj/project.xcworkspace;
-			sourceTree = "<group>";
-		};
-		40F022AA5D3C1E327039E3B5 /* Alexander.Sysoev.xcuserdatad */ = {
-			isa = PBXGroup;
-			children = (
-				40F0204881364D2CC556D6C2 /* xcschemes */,
-			);
-			path = Alexander.Sysoev.xcuserdatad;
-			sourceTree = "<group>";
-		};
-		40F029D9C3A2948CAD706B37 /* swiftpm */ = {
-			isa = PBXGroup;
-			children = (
-				40F02E1C230FABB6FD7DA4C4 /* configuration */,
+				40F026561744E928DBAC15DE /* configuration */,
 			);
 			path = swiftpm;
 			sourceTree = "<group>";
 		};
-		40F02B742B14FF0FE74FB375 /* xcuserdata */ = {
+		40F024D07751B03A6BD6D973 /* Assets.xcassets */ = {
 			isa = PBXGroup;
 			children = (
-				40F022AA5D3C1E327039E3B5 /* Alexander.Sysoev.xcuserdatad */,
+				40F02AA8BCC840AE757F2C84 /* AppIcon.appiconset */,
+				40F02C0B4E1626983D34B2FB /* AccentColor.colorset */,
 			);
-			name = xcuserdata;
-			path = iosApp.xcodeproj/xcuserdata;
+			name = Assets.xcassets;
+			path = iosApp/Assets.xcassets;
 			sourceTree = "<group>";
 		};
-		40F02E1C230FABB6FD7DA4C4 /* configuration */ = {
+		40F024D47C949DF07CCAA6A9 /* xcshareddata */ = {
+			isa = PBXGroup;
+			children = (
+				40F024C8822D426950404FC6 /* swiftpm */,
+			);
+			path = xcshareddata;
+			sourceTree = "<group>";
+		};
+		40F026561744E928DBAC15DE /* configuration */ = {
 			isa = PBXGroup;
 			children = (
 			);
 			path = configuration;
 			sourceTree = "<group>";
 		};
-		42799AB246E5F90AF97AA0EF /* Frameworks */ = {
+		40F026620EA4A481209BC837 /* project.xcworkspace */ = {
 			isa = PBXGroup;
 			children = (
+				40F024D47C949DF07CCAA6A9 /* xcshareddata */,
 			);
-			name = Frameworks;
+			path = project.xcworkspace;
 			sourceTree = "<group>";
 		};
-		7555FF72242A565900829871 = {
+		40F0268E66219982A62C21D7 /* Configuration */ = {
 			isa = PBXGroup;
 			children = (
-				AB1DB47929225F7C00F7AF9C /* Configuration */,
-				7555FF7D242A565900829871 /* iosApp */,
-				7555FF7C242A565900829871 /* Products */,
-				42799AB246E5F90AF97AA0EF /* Frameworks */,
-				40F02B742B14FF0FE74FB375 /* xcuserdata */,
-				40F021D838FEA03651EE2BA0 /* project.xcworkspace */,
-			);
-			sourceTree = "<group>";
-		};
-		7555FF7C242A565900829871 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				7555FF7B242A565900829871 /* .app */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
-		7555FF7D242A565900829871 /* iosApp */ = {
-			isa = PBXGroup;
-			children = (
-				058557BA273AAA24004C7B11 /* Assets.xcassets */,
-				7555FF82242A565900829871 /* ContentView.swift */,
-				7555FF8C242A565B00829871 /* Info.plist */,
-				2152FB032600AC8F00CF470E /* iOSApp.swift */,
-				058557D7273AAEEB004C7B11 /* Preview Content */,
-			);
-			path = iosApp;
-			sourceTree = "<group>";
-		};
-		AB1DB47929225F7C00F7AF9C /* Configuration */ = {
-			isa = PBXGroup;
-			children = (
-				AB3632DC29227652001CCB65 /* Config.xcconfig */,
 			);
 			path = Configuration;
+			sourceTree = "<group>";
+		};
+		40F026CDD7B4D79F380B42F2 /* Preview Assets.xcassets */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "Preview Assets.xcassets";
+			sourceTree = "<group>";
+		};
+		40F0276D8B3F62A043CB77CE /* iosApp.xcodeproj */ = {
+			isa = PBXGroup;
+			children = (
+				40F02C81B5355D831690F04F /* xcuserdata */,
+				40F026620EA4A481209BC837 /* project.xcworkspace */,
+			);
+			path = iosApp.xcodeproj;
+			sourceTree = "<group>";
+		};
+		40F02777E8E5186C2EAAEA4B /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				40F026CDD7B4D79F380B42F2 /* Preview Assets.xcassets */,
+			);
+			name = "Preview Content";
+			path = "iosApp/Preview Content";
+			sourceTree = "<group>";
+		};
+		40F02942F8E87BB8DFCE9A97 /* iosApp */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = iosApp;
+			sourceTree = "<group>";
+		};
+		40F02AA8BCC840AE757F2C84 /* AppIcon.appiconset */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = AppIcon.appiconset;
+			sourceTree = "<group>";
+		};
+		40F02ADFC19C551163D1CE54 /* Alexander.Sysoev.xcuserdatad */ = {
+			isa = PBXGroup;
+			children = (
+				40F0214385FA10B0F3B08B33 /* xcschemes */,
+			);
+			path = Alexander.Sysoev.xcuserdatad;
+			sourceTree = "<group>";
+		};
+		40F02C0B4E1626983D34B2FB /* AccentColor.colorset */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = AccentColor.colorset;
+			sourceTree = "<group>";
+		};
+		40F02C81B5355D831690F04F /* xcuserdata */ = {
+			isa = PBXGroup;
+			children = (
+				40F02ADFC19C551163D1CE54 /* Alexander.Sysoev.xcuserdatad */,
+			);
+			path = xcuserdata;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -152,7 +152,6 @@
 			);
 			name = iosApp;
 			productName = iosApp;
-			productReference = 7555FF7B242A565900829871 /* .app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -178,8 +177,7 @@
 				en,
 				Base,
 			);
-			mainGroup = 7555FF72242A565900829871;
-			productRefGroup = 7555FF7C242A565900829871 /* Products */;
+			mainGroup = 40F023DDF08CC310C886E6C1;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
@@ -193,8 +191,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				058557D9273AAEEB004C7B11 /* Preview Assets.xcassets in Resources */,
-				058557BB273AAA24004C7B11 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -226,8 +222,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2152FB042600AC8F00CF470E /* iOSApp.swift in Sources */,
-				7555FF83242A565900829871 /* ContentView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -236,7 +230,6 @@
 /* Begin XCBuildConfiguration section */
 		7555FFA3242A565B00829871 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = AB3632DC29227652001CCB65 /* Config.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
@@ -298,7 +291,6 @@
 		};
 		7555FFA4242A565B00829871 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = AB3632DC29227652001CCB65 /* Config.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
