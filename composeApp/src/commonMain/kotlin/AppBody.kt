@@ -11,7 +11,7 @@ fun AppBody(screen: Screen, model: Model) {
             Text("Leaderboard")
         }
         Screen.Settings -> {
-            Text("Settings")
+            SettignsScreen(model)
         }
     }
 }
