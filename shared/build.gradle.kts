@@ -1,6 +1,7 @@
 plugins {
     alias(libs.plugins.kotlinMultiplatform)
     alias(libs.plugins.androidLibrary)
+    alias(libs.plugins.serialization)
 }
 
 kotlin {
@@ -20,6 +21,7 @@ kotlin {
     
     sourceSets {
         commonMain.dependencies {
+            api(libs.serialization.core)
             // put your Multiplatform dependencies here
         }
     }

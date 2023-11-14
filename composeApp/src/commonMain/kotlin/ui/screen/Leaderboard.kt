@@ -16,26 +16,16 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-
-class UserScore(
-    val userName: String,
-    val score: Int,
-)
-
-val allPlayers = listOf(
-    UserScore("user1", 1),
-    UserScore("user2", 12),
-    UserScore("user3", 1000),
-    UserScore("user4", 800),
-    UserScore("user5", 900),
-    UserScore("user6", 700),
-    UserScore("user7", 43),
-    UserScore("me", 13),
-)
+import api.apiService
+import org.jetbrains.compose.resources.LoadState
+import org.jetbrains.compose.resources.load
 
 @Composable
 fun Leaderboard(model: Model) {
     val padding = 16.dp
+    val leaderboardState = load {
+        apiService.getLeaderboard()
+    }
 
     Column(
         modifier = Modifier
@@ -52,14 +42,26 @@ fun Leaderboard(model: Model) {
             modifier = Modifier.padding(top = padding),
         )
         
-        allPlayers.sortedByDescending { it.score }.forEachIndexed { i, score ->
-            LeaderboardRow(
-                index = i + 1,
-                leftText = score.userName,
-                rightText = score.score.toString(),
-                highlight = score.userName == model.username,
-                isLast = i == allPlayers.size - 1
-            )
+        when (leaderboardState) {
+            is LoadState.Loading -> {
+                Text("Loading leaderboard...")
+            }
+            is LoadState.Error -> {
+                Text("failed to load leaderboard")
+            }
+            is LoadState.Success -> {
+                val leaderboard = leaderboardState.value
+
+                leaderboard.users.sortedByDescending { it.counterValue }.forEachIndexed { i, score ->
+                    LeaderboardRow(
+                        index = i + 1,
+                        leftText = score.username,
+                        rightText = score.counterValue.toString(),
+                        highlight = score.username == model.username,
+                        isLast = i == leaderboard.users.size - 1
+                    )
+                }
+            }
         }
     }
 }

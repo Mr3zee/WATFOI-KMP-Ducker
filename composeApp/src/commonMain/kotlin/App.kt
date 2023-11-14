@@ -1,10 +1,14 @@
-import androidx.compose.material.*
-import androidx.compose.runtime.*
+import androidx.compose.material.MaterialTheme
+import androidx.compose.material.Scaffold
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.MutableState
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import api.apiService
 import model.Model
 import org.jetbrains.compose.resources.LoadState
 import org.jetbrains.compose.resources.load
 import storage.Database
-import storage.LoggedUser
 import ui.AppBody
 import ui.NavBar
 import ui.screen.LoginScreen
@@ -13,17 +17,17 @@ import ui.screen.Screen
 @Composable
 fun App(database: Database) {
     MaterialTheme {
-        WithLoggedIn(database) { initialUser ->
-            val user = remember { mutableStateOf(initialUser) }
+        TryLogIn(database) { initialSettings ->
+            val userSettings = remember { mutableStateOf(initialSettings) }
 
-            when (user.value) {
+            when (userSettings.value) {
                 null -> {
-                    LoginScreen(user, database)
+                    LoginScreen(userSettings, database)
                 }
 
                 else -> {
                     val screen: MutableState<Screen> = remember { mutableStateOf(Screen.Main) }
-                    val model: Model = remember { Model(user, database) }
+                    val model: Model = Model.create(userSettings, database)
 
                     Scaffold(
                         bottomBar = {
@@ -39,12 +43,24 @@ fun App(database: Database) {
 }
 
 @Composable
-private fun WithLoggedIn(database: Database, content: @Composable (LoggedUser?) -> Unit) {
-    val userState = load { database.userQueries.getUser().executeAsOneOrNull() }
+private fun TryLogIn(database: Database, content: @Composable (UserSettings?) -> Unit) {
+    val userState = load {
+        val user = database.userQueries.getUser().executeAsOneOrNull() ?: return@load null
+        apiService.loginOrRegister(User(user.name, user.password))
+    }
 
     when (userState) {
         is LoadState.Error -> content(null)
-        is LoadState.Success -> content(userState.value)
+
+        is LoadState.Success -> {
+            val value = userState.value
+            if (value == null) {
+                content(null)
+            } else {
+                content(userState.value)
+            }
+        }
+
         else -> {}
     }
 }

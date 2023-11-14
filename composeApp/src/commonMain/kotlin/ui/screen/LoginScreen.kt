@@ -1,5 +1,7 @@
 package ui.screen
 
+import User
+import UserSettings
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.Button
 import androidx.compose.material.MaterialTheme
@@ -9,13 +11,17 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import api.apiService
+import kotlinx.coroutines.launch
 import storage.Database
-import storage.LoggedUser
 
 @Composable
-fun LoginScreen(userState: MutableState<LoggedUser?>, database: Database) {
+fun LoginScreen(userState: MutableState<UserSettings?>, database: Database) {
+    val scope = rememberCoroutineScope()
+
     Box(
         modifier = Modifier
             .fillMaxSize(),
@@ -27,6 +33,7 @@ fun LoginScreen(userState: MutableState<LoggedUser?>, database: Database) {
             var username by remember { mutableStateOf("") }
             var password by remember { mutableStateOf("") }
             var error by remember { mutableStateOf<String?>(null) }
+            var inProgress by remember { mutableStateOf(false) }
 
             Text("Login or register", fontSize = 35.sp, fontWeight = FontWeight.Bold)
 
@@ -40,12 +47,13 @@ fun LoginScreen(userState: MutableState<LoggedUser?>, database: Database) {
             Box(Modifier.height(4.dp))
 
             TextField(
-                value = "*".repeat(password.length),
+                value = password,
                 onValueChange = {
                     password = it
                 },
                 label = { Text("Password") },
-                isError = error?.startsWith("Password") ?: false
+                isError = error?.startsWith("Password") ?: false,
+                visualTransformation = remember { PasswordVisualTransformation() }
             )
             
             val errorText = error
@@ -65,14 +73,32 @@ fun LoginScreen(userState: MutableState<LoggedUser?>, database: Database) {
 
                     else -> {
                         error = null
-                        // todo server validation
 
-                        database.userQueries.login(username, password)
-                        userState.value = LoggedUser(username, password)
+                        scope.launch {
+                            inProgress = false
+
+                            try {
+                                val userSettings = apiService.loginOrRegister(User(username, password))
+                                if (userSettings != null) {
+                                    database.userQueries.login(username, password)
+                                    userState.value = userSettings
+                                } else {
+                                    error = "Failed to login. Try again"
+                                }
+                            } catch (e : Exception) {
+                                error = e.message
+                            }
+
+                            inProgress = false
+                        }
                     }
                 }
             }) {
-                Text("Login/Register")
+                if (inProgress) {
+                    Text("Waiting...")
+                } else {
+                    Text("Login/Register")
+                }
             }
         }
     }
