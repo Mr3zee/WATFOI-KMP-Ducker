@@ -8,7 +8,7 @@ fun AppBody(screen: Screen, model: Model) {
             MainScreen(model)
         }
         Screen.Leaderboard -> {
-            Text("Leaderboard")
+            Leaderboard(model)
         }
         Screen.Settings -> {
             SettignsScreen(model)
