@@ -26,7 +26,7 @@ enum class ImageAnimatonState(val targetSize: Int) {
 
 @OptIn(ExperimentalResourceApi::class)
 @Composable
-fun ClickableDuck(duckName: String, model: Model) {
+fun ClickableDuck(model: Model) {
     var imageState by remember { mutableStateOf(ImageAnimatonState.Full) }
     val imageSize = remember {
         Animatable(imageState.targetSize.toFloat())
@@ -56,18 +56,20 @@ fun ClickableDuck(duckName: String, model: Model) {
         modifier = Modifier.size(ClickableDuck.FULL_SIZE.dp),
         contentAlignment = Alignment.Center,
     ) {
+        val duck by remember { model.selectedDuck }
+
         Image(
-            painterResource("ducks/$duckName"),
+            painterResource(duck.resourse()),
             contentDescription = "Duck",
             modifier = Modifier
                 .size(imageSize.value.dp)
                 .clickable(
                     indication = null,
                     interactionSource = remember { MutableInteractionSource() },
-                    ) {
+                ) {
                     imageState = ImageAnimatonState.Interrupted
 
-                        model.conterValue.value++
+                    model.conterValue.value++
                 }
         )
     }
