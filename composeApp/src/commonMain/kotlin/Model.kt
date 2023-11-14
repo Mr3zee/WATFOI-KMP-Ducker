@@ -1,8 +1,16 @@
+import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.mutableStateOf
+import storage.Database
+import storage.LoggedUser
 
-class User(val name: String)
+class Model(private val user: MutableState<LoggedUser?>, private val database: Database) {
+    val username: String? get() = user.value?.name
 
-class Model(val user: User) {
     val conterValue = mutableStateOf(0)
     val selectedDuck = mutableStateOf(DuckType.T_SHIRT)
+
+    fun logout() {
+        database.userQueries.loggout()
+        user.value = null
+    }
 }

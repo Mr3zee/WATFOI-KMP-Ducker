@@ -1,0 +1,14 @@
+CREATE TABLE loggedUser (
+    name TEXT PRIMARY KEY NOT NULL,
+    password TEXT NOT NULL
+);
+
+login:
+INSERT INTO loggedUser(name, password)
+VALUES (?, ?);
+
+loggout:
+DELETE FROM loggedUser WHERE 1=1;
+
+getUser:
+SELECT * FROM loggedUser;

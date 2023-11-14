@@ -18,7 +18,7 @@ class UserScore(
     val score: Int,
 )
 
-val allPlayers = listOf<UserScore>(
+val allPlayers = listOf(
     UserScore("user1", 1),
     UserScore("user2", 12),
     UserScore("user3", 1000),
@@ -31,9 +31,11 @@ val allPlayers = listOf<UserScore>(
 
 @Composable
 fun Leaderboard(model: Model) {
+    val padding = 16.dp
+
     Column(
         modifier = Modifier
-            .padding(16.dp)
+            .padding(start = padding, end = padding, bottom = 60.dp)
             .verticalScroll(rememberScrollState())
     ) {
         LeaderboardRow(
@@ -42,7 +44,8 @@ fun Leaderboard(model: Model) {
             rightText = "Score",
             isLast = false,
             highlight = false,
-            fontWeight = FontWeight.Bold
+            fontWeight = FontWeight.Bold,
+            modifier = Modifier.padding(top = padding),
         )
         
         allPlayers.sortedByDescending { it.score }.forEachIndexed { i, score ->
@@ -50,7 +53,7 @@ fun Leaderboard(model: Model) {
                 index = i + 1,
                 leftText = score.userName,
                 rightText = score.score.toString(),
-                highlight = score.userName == model.user.name,
+                highlight = score.userName == model.username,
                 isLast = i == allPlayers.size - 1
             )
         }
@@ -65,13 +68,14 @@ private fun LeaderboardRow(
     isLast: Boolean,
     highlight: Boolean,
     fontWeight: FontWeight? = null,
+    modifier: Modifier = Modifier,
 ) {
     val fontSize = 20.sp
     val horizontalPadding = 4.dp
     val textColor = if (highlight) Color.White else Color.Black
     
     Row(
-        Modifier
+        modifier
             .height(36.dp)
             .background(if (highlight) MaterialTheme.colors.primary else MaterialTheme.colors.background)
             .fillMaxWidth(),
