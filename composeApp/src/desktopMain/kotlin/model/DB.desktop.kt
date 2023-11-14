@@ -1,3 +1,5 @@
+package model
+
 import app.cash.sqldelight.db.SqlDriver
 import app.cash.sqldelight.driver.jdbc.sqlite.JdbcSqliteDriver
 import storage.Database

@@ -1,3 +1,8 @@
+package ui.screen
+
+import ui.ClickableDuck
+import ui.Counter
+import model.Model
 import androidx.compose.foundation.layout.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment

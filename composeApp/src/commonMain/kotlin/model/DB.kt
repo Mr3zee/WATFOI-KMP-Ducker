@@ -1,3 +1,5 @@
+package model
+
 import app.cash.sqldelight.db.SqlDriver
 import storage.Database
 

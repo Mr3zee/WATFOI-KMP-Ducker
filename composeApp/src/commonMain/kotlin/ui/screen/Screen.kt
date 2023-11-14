@@ -1,3 +1,5 @@
+package ui.screen
+
 sealed class Screen(val name: String, private val iconName: String) {
     data object Leaderboard : Screen("Leaderboard", "leaderboard")
     data object Main : Screen("Main", "main")

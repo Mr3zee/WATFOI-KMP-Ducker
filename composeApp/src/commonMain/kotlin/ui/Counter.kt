@@ -1,3 +1,6 @@
+package ui
+
+import model.Model
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue

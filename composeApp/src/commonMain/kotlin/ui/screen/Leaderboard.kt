@@ -1,3 +1,7 @@
+package ui.screen
+
+import model.Model
+import ui.VerticalDivider
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.rememberScrollState

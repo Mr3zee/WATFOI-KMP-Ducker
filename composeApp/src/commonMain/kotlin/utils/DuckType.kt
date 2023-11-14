@@ -1,3 +1,5 @@
+package utils
+
 enum class DuckType(private val pngName: String) {
     T_SHIRT("t-shirt"),
     SHERIF("sherif"),
