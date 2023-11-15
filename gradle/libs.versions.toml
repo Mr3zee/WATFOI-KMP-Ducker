@@ -19,6 +19,8 @@ kotlin = "1.9.20"
 junit = "4.13.2"
 sql-delight = "2.0.0"
 serialization = "1.6.0"
+exposed = "0.44.1"
+postgresql = "42.6.0"
 
 [libraries]
 kotlin-test = { module = "org.jetbrains.kotlin:kotlin-test", version.ref = "kotlin" }
@@ -51,6 +53,9 @@ sql-delight-driver-android = { module = "app.cash.sqldelight:android-driver", ve
 sql-delight-driver-native = { module = "app.cash.sqldelight:native-driver", version.ref = "sql-delight" }
 sql-delight-driver-sqlite = { module = "app.cash.sqldelight:sqlite-driver", version.ref = "sql-delight" }
 serialization-core = { module = "org.jetbrains.kotlinx:kotlinx-serialization-core", version.ref = "serialization" }
+exposed-core = { module = "org.jetbrains.exposed:exposed-core", version.ref = "exposed" }
+exposed-jdbc = { module = "org.jetbrains.exposed:exposed-jdbc", version.ref = "exposed" }
+postgresql = { module = "org.postgresql:postgresql", version.ref = "postgresql" }
 
 [plugins]
 kotlinJvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin" }

@@ -41,7 +41,7 @@ fun Application.module() {
 
             post("/update") {
                 val settings = call.receive<UserSettings>()
-                if (service.login(settings.user)) {
+                if (service.login(settings.user) != null) {
                     service.update(settings)
                     call.respond(HttpStatusCode.OK)
                 } else {

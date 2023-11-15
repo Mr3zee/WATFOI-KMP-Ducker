@@ -46,7 +46,15 @@ fun App(database: Database) {
 private fun TryLogIn(database: Database, content: @Composable (UserSettings?) -> Unit) {
     val userState = load {
         val user = database.userQueries.getUser().executeAsOneOrNull() ?: return@load null
-        apiService.loginOrRegister(User(user.name, user.password))
+        try {
+            apiService.loginOrRegister(User(user.name, user.password)).also {
+                if (it == null) {
+                    database.userQueries.loggout()
+                }
+            }
+        } finally {
+            database.userQueries.loggout()
+        }
     }
 
     when (userState) {
