@@ -52,8 +52,9 @@ private fun TryLogIn(database: Database, content: @Composable (UserSettings?) ->
                     database.userQueries.loggout()
                 }
             }
-        } finally {
+        } catch (e : Exception) {
             database.userQueries.loggout()
+            throw e
         }
     }
 
