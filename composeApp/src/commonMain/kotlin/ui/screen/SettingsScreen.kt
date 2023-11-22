@@ -4,10 +4,7 @@ import utils.DuckType
 import model.Model
 import androidx.compose.foundation.*
 import androidx.compose.foundation.layout.*
-import androidx.compose.material.Button
-import androidx.compose.material.Divider
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Text
+import androidx.compose.material.*
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.remember
@@ -23,7 +20,7 @@ import org.jetbrains.compose.resources.painterResource
 private const val paddingPx = 16
 
 @Composable
-fun SettignsScreen(model: Model) {
+fun SettingsScreen(model: Model) {
     val screenWidth = getScreenWidthDp()
 
     Column(
@@ -90,7 +87,7 @@ fun SelectableDuck(model: Model, duckType: DuckType, size: Dp) {
             },
     ) {
         Image(
-            painterResource(duckType.resourse()),
+            painterResource(duckType.resource()),
             contentDescription = duckType.name,
             modifier = Modifier.size(size)
         )

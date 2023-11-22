@@ -16,40 +16,30 @@ import org.jetbrains.compose.resources.ExperimentalResourceApi
 import org.jetbrains.compose.resources.painterResource
 
 object ClickableDuck {
-    const val FULL_SIZE = 360
-    const val SHRINKED_SIZE = 330
+    const val FULL_SIZE = 360f
+    const val SHRANK_SIZE = 330f
 }
 
-enum class ImageAnimatonState(val targetSize: Int) {
-    Shirinked(ClickableDuck.SHRINKED_SIZE),
+enum class ImageAnimationState(val targetSize: Float) {
+    Shrank(ClickableDuck.SHRANK_SIZE),
     Full(ClickableDuck.FULL_SIZE),
-    Interrupted(ClickableDuck.FULL_SIZE),
 }
 
 @OptIn(ExperimentalResourceApi::class)
 @Composable
 fun ClickableDuck(model: Model) {
-    var imageState by remember { mutableStateOf(ImageAnimatonState.Full) }
+    var imageState by remember { mutableStateOf(ImageAnimationState.Full) }
     val imageSize = remember {
-        Animatable(imageState.targetSize.toFloat())
+        Animatable(imageState.targetSize)
     }
 
     LaunchedEffect(imageState) {
-        when (imageState) {
-            ImageAnimatonState.Full, ImageAnimatonState.Shirinked -> {
-                imageSize.animateTo(
-                    targetValue = imageState.targetSize.toFloat(),
-                    animationSpec = tween(durationMillis = 70),
-                ) {
-                    if (value == targetValue) {
-                        imageState = ImageAnimatonState.Full
-                    }
-                }
-            }
-
-            ImageAnimatonState.Interrupted -> {
-                imageSize.snapTo(ImageAnimatonState.Full.targetSize.toFloat())
-                imageState = ImageAnimatonState.Shirinked
+        imageSize.animateTo(
+            targetValue = imageState.targetSize,
+            animationSpec = tween(durationMillis = 70),
+        ) {
+            if (value == targetValue) {
+                imageState = ImageAnimationState.Full
             }
         }
     }
@@ -61,7 +51,7 @@ fun ClickableDuck(model: Model) {
         val duck by remember { model.selectedDuck }
 
         Image(
-            painterResource(duck.resourse()),
+            painterResource(duck.resource()),
             contentDescription = "Duck",
             modifier = Modifier
                 .size(imageSize.value.dp)
@@ -69,9 +59,9 @@ fun ClickableDuck(model: Model) {
                     indication = null,
                     interactionSource = remember { MutableInteractionSource() },
                 ) {
-                    imageState = ImageAnimatonState.Interrupted
+                    imageState = ImageAnimationState.Shrank
 
-                    model.conterValue.value++
+                    model.counterValue.value++
                 }
         )
     }

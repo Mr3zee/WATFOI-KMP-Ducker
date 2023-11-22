@@ -15,7 +15,7 @@ class ApiService {
             setBody(user)
             contentType(ContentType.Application.Json)
         }
-        
+
         return when (response.status) {
             HttpStatusCode.OK -> response.body<UserSettings>()
             else -> null
@@ -23,12 +23,12 @@ class ApiService {
     }
 
     suspend fun update(settings: UserSettings) {
-        apiClient.post("/api/update"){
+        apiClient.post("/api/update") {
             setBody(settings)
             contentType(ContentType.Application.Json)
         }
     }
-    
+
     suspend fun getLeaderboard(): Leaderboard {
         return apiClient.get("/api/leaderboard").body()
     }

@@ -5,7 +5,7 @@ import androidx.compose.runtime.Composable
 import ui.screen.Leaderboard
 import ui.screen.MainScreen
 import ui.screen.Screen
-import ui.screen.SettignsScreen
+import ui.screen.SettingsScreen
 
 @Composable
 fun AppBody(screen: Screen, model: Model) {
@@ -17,7 +17,7 @@ fun AppBody(screen: Screen, model: Model) {
             Leaderboard(model)
         }
         Screen.Settings -> {
-            SettignsScreen(model)
+            SettingsScreen(model)
         }
     }
 }

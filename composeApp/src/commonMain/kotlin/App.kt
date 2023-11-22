@@ -49,11 +49,11 @@ private fun TryLogIn(database: Database, content: @Composable (UserSettings?) ->
         try {
             apiService.loginOrRegister(User(user.name, user.password)).also {
                 if (it == null) {
-                    database.userQueries.loggout()
+                    database.userQueries.logout()
                 }
             }
         } catch (e : Exception) {
-            database.userQueries.loggout()
+            database.userQueries.logout()
             throw e
         }
     }

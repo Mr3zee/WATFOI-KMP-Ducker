@@ -13,7 +13,7 @@ import androidx.compose.ui.unit.sp
 
 @Composable
 fun Counter(model: Model) {
-    val value: Int by remember { model.conterValue }
+    val value: Int by remember { model.counterValue }
 
     Text(
         text = "$value",
