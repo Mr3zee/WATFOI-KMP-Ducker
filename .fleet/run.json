@@ -2,12 +2,12 @@
     "configurations": [
         {
             "type": "android-app",
-            "name": "Android-app configuration",
+            "name": "Android",
             "module": "KotlinProject.composeApp.main",
             "destination": "Pixel 7 API UpsideDownCakePrivacySandbox",
         },
         {
-            "name": "desktopApp",
+            "name": "Desktop",
             "type": "gradle",
             "workingDir": "$PROJECT_DIR$",
             "tasks": [
@@ -19,9 +19,22 @@
                 "-p",
                 "$PROJECT_DIR$/composeApp"
             ],
-            "initScripts": {
-                "flmapper": "ext.mapPath = { path -> null }"
-            }
-        }
+        },
+        {
+            "name": "Server",
+            "type": "gradle",
+            "workingDir": "$PROJECT_DIR$",
+            "tasks": [
+                "server:run"
+            ],
+            "args": [
+                ""
+            ],
+        },
+        {
+            "type": "docker-compose-up",
+            "name": "Local Postgres (Docker)",
+            "files": ["docker-compose.yml"],
+        },
     ]
 }
