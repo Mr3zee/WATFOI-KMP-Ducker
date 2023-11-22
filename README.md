@@ -9,7 +9,7 @@ Application:
 ![Screens](docs/Screens.png)
 
 
-Modules overview:
+# Modules overview:
 
 ### `/server` is for the Ktor server application.
 Server contains logic for handling incoming requests and storing and retrieving data from from db.
@@ -44,6 +44,7 @@ It contains several subfolders:
   - [desktopMain](composeApp/src/desktopMain) is a JVM platform folder that is configured to run Compose Desktop App. 
 
 To run the app in Fleet use `Android` and `Desktop` run configurations respectively.
+For Android you need to be careful with the name of the emulator. Check `destination` field.
 
 ### `/iosApp` contains [iOS applications](https://developer.apple.com/documentation/xcode/creating-an-xcode-project-for-an-app). Even if you’re sharing your UI with Compose Multiplatform, 
   you need this entry point for your iOS app. This is also where you should add SwiftUI code for your project.
